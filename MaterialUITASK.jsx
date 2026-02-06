@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { FormLabel, TextField, Button, Box, MenuItem, RadioGroup, FormControlLabel, Radio } from "@mui/material";
+import { Grid, TextField, Button, Box, MenuItem, RadioGroup, FormControlLabel, Radio, Typography } from "@mui/material";
 
 const MuiFormikForm = () => {
 
@@ -87,53 +87,82 @@ const MuiFormikForm = () => {
         alignItems: "center",
       }}
     >
-      <Box
+      <Grid
         sx={{
           width: 1050,
         }}
       >
 
         <form onSubmit={formik.handleSubmit}>
-          <Box sx={{ textAlign: "center", fontSize: "30px", margin: "10px" }}>
+          <Typography fontWeight="bold" variant="h4" align="center" sx={{ mb: 1 }}>
             Job seekers Application Form
-          </Box>
-          <Box sx={{ textAlign: "center", marginBottom: "20px" }}>Looking for a job ? Fill in the form below with the required information.</Box>
-          <Box sx={{ width: "100%", height: "0.5px", backgroundColor: "black", marginBottom: "30px" }}></Box>
-          <FormLabel>Name</FormLabel>
-          <Box sx={{ display: "flex", gap: "12px", justifyContent: "center", alignItems: "center" }}>
+          </Typography>
 
-            <TextField
-              fullWidth
-              placeholder="Firstname"
-              name="FirstName"
-              margin="normal"
-              value={formik.values.FirstName}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.FirstName && Boolean(formik.errors.FirstName)}
-              helperText={formik.touched.FirstName && formik.errors.FirstName}
-              sx={{
-                backgroundColor: "#cabda6",
-              }}
-            />
+          <Typography align="center" sx={{ mb: 2 }}>
+            Looking for a job ? Fill in the form below with the required information.
+          </Typography>
 
-            <TextField
-              fullWidth
-              placeholder="Last Name"
-              name="LastName"
-              margin="normal"
-              value={formik.values.LastName}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.LastName && Boolean(formik.errors.LastName)}
-              helperText={formik.touched.LastName && formik.errors.LastName}
-              sx={{
-                backgroundColor: "#cabda6",
-              }}
-            />
+          <Grid sx={{ width: "100%", height: "0.5px", backgroundColor: "black", marginBottom: "30px" }}></Grid>
 
-          </Box>
-          <FormLabel>Email</FormLabel>
+
+//
+
+          <Typography fontWeight="bold" sx={{ mb: 1 }}>
+            Name
+          </Typography>
+
+          <Grid sx={{ display: "flex", gap: "12px", justifyContent: "center", alignItems: "center" }}>
+
+            <Grid sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+              <TextField
+                fullWidth
+                placeholder="Firstname"
+                name="FirstName"
+                margin="normal"
+                value={formik.values.FirstName}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.FirstName && Boolean(formik.errors.FirstName)}
+                sx={{
+                  backgroundColor: "#e1ded8",
+                }}
+              />
+
+              {formik.touched.FirstName && formik.errors.FirstName && (
+                <Typography color="error" fontWeight="bold" fontSize="14px">
+                  {formik.errors.FirstName}
+                </Typography>
+              )}
+            </Grid>
+
+            <Grid sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+              <TextField
+                fullWidth
+                placeholder="Last Name"
+                name="LastName"
+                margin="normal"
+                value={formik.values.LastName}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.LastName && Boolean(formik.errors.LastName)}
+                sx={{
+                  backgroundColor: "#e1ded8",
+                }}
+              />
+              {formik.touched.LastName && formik.errors.LastName && (
+                <Typography color="error" fontWeight="bold" fontSize="12px">
+                  {formik.errors.LastName}
+                </Typography>
+              )}
+            </Grid>
+
+          </Grid>
+
+          <Typography fontWeight="bold">
+            Email
+          </Typography>
+
+
           <TextField
             fullWidth
             placeholder="Email"
@@ -143,13 +172,21 @@ const MuiFormikForm = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={formik.touched.email && Boolean(formik.errors.email)}
-            helperText={formik.touched.email && formik.errors.email}
+
             sx={{
-              backgroundColor: "#cabda6",
+              backgroundColor: "#e1ded8",
             }}
           />
 
-          <FormLabel>Address</FormLabel>
+          {formik.touched.email && formik.errors.email && (
+            <Typography color="error" fontWeight="bold" fontSize="14px">
+              {formik.errors.email}
+            </Typography>
+          )}
+
+          <Typography fontWeight="bold" sx={{ mb: 1 }}>
+            Address
+          </Typography>
 
           <TextField
             fullWidth
@@ -160,93 +197,137 @@ const MuiFormikForm = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={formik.touched.Address && Boolean(formik.errors.Address)}
-            helperText={formik.touched.Address && formik.errors.Address}
             sx={{
-              backgroundColor: "#cabda6",
+              backgroundColor: "#e1ded8",
             }}
           />
 
-          <Box sx={{ display: "flex", gap: "12px", justifyContent: "center", alignItems: "center" }}>
-            <TextField
-              fullWidth
-              placeholder="City"
-              name="City"
-              margin="normal"
-              value={formik.values.City}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.City && Boolean(formik.errors.City)}
-              helperText={formik.touched.City && formik.errors.City}
-              sx={{
-                backgroundColor: "#cabda6",
-              }}
-            />
+          {formik.touched.Address && formik.errors.Address && (
+            <Typography color="error" fontWeight="bold" fontSize="14px">
+              {formik.errors.Address}
+            </Typography>
+          )}
 
-            <TextField
-              fullWidth
-              placeholder="Region"
-              name="Region"
-              margin="normal"
-              value={formik.values.Region}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.Region && Boolean(formik.errors.Region)}
-              helperText={formik.touched.Region && formik.errors.Region}
-              sx={{
-                backgroundColor: "#cabda6",
-              }}
-            />
-          </Box>
+          <Grid sx={{ display: "flex", gap: "12px", justifyContent: "center", alignItems: "center" }}>
 
-          <Box sx={{ display: "flex", gap: "12px", justifyContent: "center", alignItems: "center" }}>
-            <TextField
-              fullWidth
-              placeholder="Zip"
-              name="Zip"
-              margin="normal"
-              value={formik.values.Zip}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.Zip && Boolean(formik.errors.Zip)}
-              helperText={formik.touched.Zip && formik.errors.Zip}
-              sx={{
-                backgroundColor: "#cabda6",
-              }}
-            />
+            <Grid sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+              <TextField
+                fullWidth
+                placeholder="City"
+                name="City"
+                margin="normal"
+                value={formik.values.City}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.City && Boolean(formik.errors.City)}
+                sx={{
+                  backgroundColor: "#e1ded8",
+                }}
+              />
+              {formik.touched.City && formik.errors.City && (
+                <Typography color="error" fontWeight="bold" fontSize="14px">
+                  {formik.errors.City}
+                </Typography>
+              )}
+            </Grid>
 
-            <TextField
-              fullWidth
-              placeholder="Country"
-              name="Country"
-              margin="normal"
-              value={formik.values.Country}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.Country && Boolean(formik.errors.Country)}
-              helperText={formik.touched.Country && formik.errors.Country}
-              sx={{
-                backgroundColor: "#cabda6",
-              }}
-            />
-          </Box>
+            <Grid sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+              <TextField
+                fullWidth
+                placeholder="Region"
+                name="Region"
+                margin="normal"
+                value={formik.values.Region}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.Region && Boolean(formik.errors.Region)}
+                sx={{
+                  backgroundColor: "#e1ded8",
+                }}
+              />
+              {formik.touched.Region && formik.errors.Region && (
+                <Typography color="error" fontWeight="bold" fontSize="14px">
+                  {formik.errors.Region}
+                </Typography>
+              )}
+            </Grid>
 
-          <FormLabel>Phone</FormLabel>
-          <Box sx={{ display: "flex", gap: "12px", justifyContent: "center", alignItems: "center" }}>
+          </Grid>
 
-            <TextField
-              fullWidth
-              placeholder="Phone"
-              name="Phone"
-              margin="normal"
-              value={formik.values.Phone}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.Phone && Boolean(formik.errors.Phone)}
-              helperText={formik.touched.Phone && formik.errors.Phone}
-              sx={{
-                backgroundColor: "#cabda6",
-              }}
-            />
+          <Grid sx={{ display: "flex", gap: "12px", justifyContent: "center", alignItems: "center" }}>
+
+            <Grid sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+              <TextField
+                fullWidth
+                placeholder="Zip"
+                name="Zip"
+                margin="normal"
+                value={formik.values.Zip}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.Zip && Boolean(formik.errors.Zip)}
+                sx={{
+                  backgroundColor: "#e1ded8",
+                }}
+              />
+              {formik.touched.Zip && formik.errors.Zip && (
+                <Typography color="error" fontWeight="bold" fontSize="14px">
+                  {formik.errors.Zip}
+                </Typography>
+              )}
+            </Grid>
+
+            <Grid sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+              <TextField
+                fullWidth
+                placeholder="Country"
+                name="Country"
+                margin="normal"
+                value={formik.values.Country}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.Country && Boolean(formik.errors.Country)}
+                sx={{
+                  backgroundColor: "#e1ded8",
+                }}
+              />
+              {formik.touched.Country && formik.errors.Country && (
+                <Typography color="error" fontWeight="bold" fontSize="14px">
+                  {formik.errors.Country}
+                </Typography>
+              )}
+            </Grid>
+
+          </Grid>
+
+          <Typography fontWeight="bold" sx={{ mb: 1 }}>
+            Phone
+          </Typography>
+
+          <Grid sx={{ display: "flex", gap: "12px", justifyContent: "center", alignItems: "center" }}>
+
+            <Grid sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+              <TextField
+                fullWidth
+                placeholder="Phone"
+                name="Phone"
+                margin="normal"
+                value={formik.values.Phone}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.Phone && Boolean(formik.errors.Phone)}
+                sx={{
+                  backgroundColor: "#e1ded8",
+                }}
+              />
+
+              {formik.touched.Phone && formik.errors.Phone && (
+                <Typography color="error" fontWeight="bold" fontSize="14px">
+                  {formik.errors.Phone}
+                </Typography>
+              )}
+            </Grid>
+
 
             <TextField
               fullWidth
@@ -257,19 +338,19 @@ const MuiFormikForm = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               error={formik.touched.Alternate && Boolean(formik.errors.Alternate)}
-              helperText={formik.touched.Alternate && formik.errors.Alternate}
               sx={{
-                backgroundColor: "#cabda6",
+                backgroundColor: "#e1ded8",
               }}
             />
 
-          </Box>
+          </Grid>
 
-          <Box sx={{ display: "flex", gap: "12px", width: "100%" }}>
+          <Grid sx={{ display: "flex", gap: "12px", width: "100%" }}>
 
-            <Box sx={{ flex: 1, display: "flex", flexDirection: "column", gap: "6px" }}>
-              <FormLabel>Position that you applying for</FormLabel>
-
+            <Grid sx={{ flex: 1, display: "flex", flexDirection: "column", gap: "6px" }}>
+              <Typography fontWeight="bold" sx={{ mb: 1 }}>
+                Position that you applying for
+              </Typography>
               <TextField
                 select
                 fullWidth
@@ -279,9 +360,8 @@ const MuiFormikForm = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={formik.touched.position && Boolean(formik.errors.position)}
-                helperText={formik.touched.position && formik.errors.position}
                 sx={{
-                  backgroundColor: "#cabda6",
+                  backgroundColor: "#e1ded8",
                 }}
               >
                 <MenuItem value="">Select Position</MenuItem>
@@ -290,11 +370,18 @@ const MuiFormikForm = () => {
                 <MenuItem value="fullstack">Fullstack</MenuItem>
 
               </TextField>
-            </Box>
 
-            <Box sx={{ flex: 1, display: "flex", flexDirection: "column", gap: "6px" }}>
-              <FormLabel>Job Type</FormLabel>
+              {formik.touched.position && formik.errors.position && (
+                <Typography color="error" fontWeight="bold" fontSize="14px">
+                  {formik.errors.position}
+                </Typography>
+              )}
+            </Grid>
 
+            <Grid sx={{ flex: 1, display: "flex", flexDirection: "column", gap: "6px" }}>
+              <Typography fontWeight="bold" sx={{ mb: 1 }}>
+                Job Type
+              </Typography>
               <TextField
                 select
                 fullWidth
@@ -304,9 +391,8 @@ const MuiFormikForm = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 error={formik.touched.Jobtype && Boolean(formik.errors.Jobtype)}
-                helperText={formik.touched.Jobtype && formik.errors.Jobtype}
                 sx={{
-                  backgroundColor: "#cabda6",
+                  backgroundColor: "#e1ded8",
                 }}
               >
                 <MenuItem value="">Select Type</MenuItem>
@@ -314,11 +400,20 @@ const MuiFormikForm = () => {
                 <MenuItem value="Parttime">Parttime</MenuItem>
                 <MenuItem value="Internship">Internship</MenuItem>
               </TextField>
-            </Box>
 
-          </Box>
+              {formik.touched.Jobtype && formik.errors.Jobtype && (
+                <Typography color="error" fontWeight="bold" fontSize="14px">
+                  {formik.errors.Jobtype}
+                </Typography>
+              )}
+            </Grid>
 
-          <FormLabel>Add Resume</FormLabel>
+          </Grid>
+
+          <Typography fontWeight="bold" sx={{ mb: 1 }}>
+            Add Resume
+          </Typography>
+
           <TextField
             fullWidth
             placeholder="Paste resume link (Google Drive / Dropbox)"
@@ -327,18 +422,22 @@ const MuiFormikForm = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={formik.touched.Resume && Boolean(formik.errors.Resume)}
-            helperText={formik.touched.Resume && formik.errors.Resume}
             sx={{
-              backgroundColor: "#cabda6",
+              backgroundColor: "#e1ded8",
             }}
           />
-
-          <FormLabel>Hoe did you hear about us?</FormLabel>
-          <RadioGroup
+          {formik.touched.Resume && formik.errors.Resume && (
+            <Typography color="error" fontWeight="bold" fontSize="14px">
+              {formik.errors.Resume}
+            </Typography>
+          )}
+          <Typography fontWeight="bold" sx={{ mb: 1 }}>
+            How did you hear about us?
+          </Typography>
+          <RadioGroup row
             name="Redibtn"
             value={formik.values.Redibtn}
             onChange={formik.handleChange}
-
           >
             <FormControlLabel value="google" control={<Radio />} label="Google" />
             <FormControlLabel value="friend" control={<Radio />} label="Friend" />
@@ -365,7 +464,7 @@ const MuiFormikForm = () => {
           </Button>
 
         </form>
-      </Box>
+      </Grid>
     </Box>
   );
 };
